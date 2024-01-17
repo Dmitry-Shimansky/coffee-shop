@@ -9,7 +9,9 @@
         </div>
         <div class="row">
           <div class="col-lg-10 offset-lg-1">
-            <h1 class="title-big">Everything You Love About Coffee</h1>
+            <header-title
+              titleText="Everything You Love About Coffee"
+            ></header-title>
             <img
               class="beanslogo"
               src="@/assets/logo/Beans_logo.svg"
@@ -59,9 +61,24 @@
         <div class="row">
           <div class="col-lg-10 offset-lg-1">
             <div class="best__wrapper">
-              <product-card />
-              <product-card />
-              <product-card />
+              <product-card
+                classItem="best__item"
+                :name="bestsellers[0].name"
+                :price="bestsellers[0].price"
+                :image="bestsellers[0].image"
+              />
+              <product-card
+                classItem="best__item"
+                :name="bestsellers[1].name"
+                :price="bestsellers[1].price"
+                :image="bestsellers[1].image"
+              />
+              <product-card
+                classItem="best__item"
+                :name="bestsellers[2].name"
+                :price="bestsellers[2].price"
+                :image="bestsellers[2].image"
+              />
             </div>
           </div>
         </div>
@@ -73,30 +90,32 @@
 <script>
 import NavBarComponent from "@/components/NavBarComponent.vue";
 import ProductCard from "@/components/ProductCard.vue";
+import HeaderTitle from "@/components/HeaderTitle.vue";
 
 export default {
   components: {
     NavBarComponent,
     ProductCard,
+    HeaderTitle,
   },
   data() {
     return {
       bestsellers: [
         {
           id: 0,
-          title: "Solimo Coffee Beans 2kg",
+          name: "Solimo Coffee Beans 2kg",
           price: 10.73,
           image: "coffee-1.jpg",
         },
         {
           id: 1,
-          title: "Presto Coffee Beans 1kg",
+          name: "Presto Coffee Beans 1kg",
           price: 15.99,
           image: "coffee-2.jpg",
         },
         {
           id: 2,
-          title: "AROMISTICO Coffee 1kg",
+          name: "AROMISTICO Coffee 1kg",
           price: 6.99,
           image: "coffee-3.jpg",
         },
