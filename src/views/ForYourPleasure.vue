@@ -52,9 +52,8 @@
                 v-for="card in goods"
                 :key="card.id"
                 classItem="shop__item"
-                :name="card.name"
-                :price="card.price"
-                :image="card.image"
+                :card="card"
+                @onNavigate="navigate"
               />
 
               <!-- <div class="shop__item">
@@ -75,6 +74,7 @@
 import NavBarComponent from "@/components/NavBarComponent.vue";
 import ProductCard from "@/components/ProductCard.vue";
 import HeaderTitle from "@/components/HeaderTitle.vue";
+import { navigate } from "@/mixins/navigate.js"
 
 export default {
   components: {
@@ -82,47 +82,16 @@ export default {
     ProductCard,
     HeaderTitle,
   },
+  computed: {
+    goods() {
+      return this.$store.getters["getGoods"]
+    }
+  },
   data() {
     return {
-      goods: [
-        {
-          id: 0,
-          name: "Solimo Coffee Beans 2kg",
-          price: 10.73,
-          image: "coffee-1.jpg",
-        },
-        {
-          id: 1,
-          name: "Presto Coffee Beans 1kg",
-          price: 15.99,
-          image: "coffee-2.jpg",
-        },
-        {
-          id: 2,
-          name: "AROMISTICO Coffee 1kg",
-          price: 6.99,
-          image: "coffee-3.jpg",
-        },
-        {
-          id: 3,
-          name: "Solimo Coffee Beans 2kg",
-          price: 10.73,
-          image: "coffee-1.jpg",
-        },
-        {
-          id: 4,
-          name: "Presto Coffee Beans 1kg",
-          price: 15.99,
-          image: "coffee-2.jpg",
-        },
-        {
-          id: 5,
-          name: "AROMISTICO Coffee 1kg",
-          price: 6.99,
-          image: "coffee-3.jpg",
-        },
-      ],
-    };
+      name: 'goods'
+    }
   },
+  mixins: [navigate]
 };
 </script>

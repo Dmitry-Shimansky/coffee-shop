@@ -70,9 +70,7 @@
                 v-for="card in bestsellers"
                 :key="card.id"
                 classItem="best__item"
-                :name="card.name"
-                :price="card.price"
-                :image="card.image"
+                :card="card"
               />
             </div>
           </div>
@@ -95,29 +93,10 @@ export default {
     ProductCard,
     HeaderTitle,
   },
-  data() {
-    return {
-      bestsellers: [
-        {
-          id: 0,
-          name: "Solimo Coffee Beans 2kg",
-          price: 10.73,
-          image: "coffee-1.jpg",
-        },
-        {
-          id: 1,
-          name: "Presto Coffee Beans 1kg",
-          price: 15.99,
-          image: "coffee-2.jpg",
-        },
-        {
-          id: 2,
-          name: "AROMISTICO Coffee 1kg",
-          price: 6.99,
-          image: "coffee-3.jpg",
-        },
-      ],
-    };
+  computed: {
+    bestsellers() {
+      return this.$store.getters["getBestsellers"]
+    }
   },
   methods: {
     smothScroll() {

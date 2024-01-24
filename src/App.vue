@@ -12,6 +12,7 @@ import OurCoffeeView from "@/views/OurCoffeeView.vue";
 import ForYourPleasure from "@/views/ForYourPleasure.vue";
 import ContactUs from "@/views/ContactUs.vue";
 import ThankYouPage from "@/views/ThankYouPage.vue";
+import GoodsItemView from './views/GoodsItemView.vue';
 
 export default {
   components: {
@@ -21,6 +22,7 @@ export default {
     ForYourPleasure,
     ContactUs,
     ThankYouPage,
+    GoodsItemView
   },
 };
 </script>
