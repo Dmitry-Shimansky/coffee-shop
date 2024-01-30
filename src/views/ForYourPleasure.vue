@@ -14,19 +14,11 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-4 offset-2">
-            <img
-              class="shop__girl"
-              src="@/assets/img/coffee_goods.jpg"
-              alt="girl"
-            />
+            <img class="shop__girl" src="@/assets/img/coffee_goods.jpg" alt="girl" />
           </div>
           <div class="col-lg-4">
             <div class="title">About our beans</div>
-            <img
-              class="beanslogo"
-              src="@/assets/logo/Beans_logo_dark.svg"
-              alt="Beans logo"
-            />
+            <img class="beanslogo" src="@/assets/logo/Beans_logo_dark.svg" alt="Beans logo" />
             <div class="shop__text">
               Extremity sweetness difficult behaviour he of. On disposal of as
               landlord horrible.
@@ -48,13 +40,8 @@
         <div class="row">
           <div class="col-lg-10 offset-lg-1">
             <div class="shop__wrapper">
-              <product-card
-                v-for="card in goods"
-                :key="card.id"
-                classItem="shop__item"
-                :card="card"
-                @onNavigate="navigate"
-              />
+              <product-card v-for="card in goods" :key="card.id" classItem="shop__item" :card="card"
+                @onNavigate="navigate" />
 
               <!-- <div class="shop__item">
                 <img src="@/assets/img/good-1.jpg" alt="coffee" />
@@ -92,6 +79,12 @@ export default {
       name: 'goods'
     }
   },
-  mixins: [navigate]
+  mixins: [navigate],
+  mounted() {
+    fetch("http://localhost:3000/goods")
+      .then((res) => res.json())
+      // .then(data => console.log(data));
+      .then((data) => { this.$store.dispatch("setGoodsData", data) });
+  }
 };
 </script>

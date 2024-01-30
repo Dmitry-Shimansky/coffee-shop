@@ -9,24 +9,13 @@
         </div>
         <div class="row">
           <div class="col-lg-10 offset-lg-1">
-            <header-title
-              titleText="Everything You Love About Coffee"
-            ></header-title>
-            <img
-              class="beanslogo"
-              src="@/assets/logo/Beans_logo.svg"
-              alt="Beans logo"
-            />
+            <header-title titleText="Everything You Love About Coffee"></header-title>
+            <img class="beanslogo" src="@/assets/logo/Beans_logo.svg" alt="Beans logo" />
             <div class="preview__subtitle">
               We makes every day full of energy and taste
             </div>
             <div class="preview__subtitle">Want to try our beans?</div>
-            <a
-              href="./coffeepage.html"
-              class="preview__btn"
-              @click.prevent="smothScroll"
-              >More</a
-            >
+            <a href="./coffeepage.html" class="preview__btn" @click.prevent="smothScroll">More</a>
           </div>
         </div>
       </div>
@@ -36,11 +25,7 @@
         <div class="row">
           <div class="col-lg-6 offset-lg-3">
             <div class="title">About Us</div>
-            <img
-              class="beanslogo"
-              src="@/assets/logo/Beans_logo_dark.svg"
-              alt="Beans logo"
-            />
+            <img class="beanslogo" src="@/assets/logo/Beans_logo_dark.svg" alt="Beans logo" />
             <div class="about__text">
               Extremity sweetness difficult behaviour he of. On disposal of as
               landlord horrible. Afraid at highly months do things on at.
@@ -66,12 +51,7 @@
         <div class="row">
           <div class="col-lg-10 offset-lg-1">
             <div class="best__wrapper">
-              <product-card
-                v-for="card in bestsellers"
-                :key="card.id"
-                classItem="best__item"
-                :card="card"
-              />
+              <product-card v-for="card in bestsellers" :key="card.id" classItem="best__item" :card="card" />
             </div>
           </div>
         </div>
@@ -106,5 +86,11 @@ export default {
       });
     },
   },
+  mounted() {
+    fetch("http://localhost:3000/bestsellers")
+      .then((res) => res.json())
+      // .then(data => console.log(data));
+      .then((data) => { this.$store.dispatch("setBestsellersData", data) });
+  }
 };
 </script>
