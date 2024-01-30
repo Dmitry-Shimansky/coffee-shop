@@ -70,9 +70,7 @@
                   <span v-for="error in v$.message.$errors" :key="error.$uid">{{ error.$message }}
                   </span>
                 </div>
-                <pre>
-                  {{ v$.message }}
-                </pre>
+
               </div>
 
               <div class="row">
@@ -130,7 +128,22 @@ export default {
     async submit() {
       // console.log(this.form);
       const isFormCorrect = await this.v$.$validate()
-      if (!isFormCorrect) return
+      if (!isFormCorrect) return;
+
+      const message = {
+        name: this.name,
+        email: this.email,
+        phone: this.phone,
+        message: this.message
+      };
+
+      fetch("http://localhost:3000/contacts", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(message),
+      });
     },
   },
 };
